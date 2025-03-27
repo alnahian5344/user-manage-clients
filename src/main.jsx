@@ -9,12 +9,18 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Update from './Update.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
     loader: ()=>fetch('http://localhost:5000/users')
+  },
+  {
+    path:"/update/:id",
+    element: <Update></Update>,
+    loader: ({params})=>fetch(`http://localhost:5000/users/${params.id}`)
   },
 ]);
 createRoot(document.getElementById('root')).render(

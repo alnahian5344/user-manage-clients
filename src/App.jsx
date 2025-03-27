@@ -2,11 +2,11 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { data, useLoaderData } from 'react-router-dom'
+import { data, Link, useLoaderData } from 'react-router-dom'
 import Swal from 'sweetalert2';
 function App() {
   const getUsers = useLoaderData();
-  
+
 
   const handleAddUser = event => {
     event.preventDefault();
@@ -15,7 +15,7 @@ function App() {
     const email = form.email.value;
     const phone = form.phone.value;
     const password = form.password.value;
-    const user = { name, phone, email, phone };
+    const user = { name, phone, email, phone,password };
 
 
 
@@ -155,7 +155,9 @@ function App() {
                 <td>
                   <button onClick={() => handleDeleteUser(user._id)}
                     className="btn btn-soft btn-error mr-1">Delete</button>
-                     <button class="btn btn-dash btn-primary">Update</button>
+                  <Link to={`/update/${user._id}`}>
+                    <button class="btn btn-dash btn-primary">Update</button>
+                  </Link>
                 </td>
               </tr>
 
